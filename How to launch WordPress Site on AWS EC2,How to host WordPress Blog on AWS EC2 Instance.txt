@@ -1,0 +1,68 @@
+-- create instance for wordpress so , browse AMI --> search for wordpress --AWS marketplace --> go for fre tier --> wordpress certified by bitnami and automatic --> n storage give 40 --> launch instance 
+
+-- now check if it is installer or not 
+
+-- copy public IP and check in browser 
+
+-- if u want to do some changes in wordpress , so in the url give "/wp-admin"
+
+-- how to get username n password ?
+
+-- instance --> actions-> MOnitor and troubl shoot -->system log--get user name n password
+
+
+
+
+
+
+
+
+
+
+
+
+
+=================== How to change Hostname of an AWS EC2 Instance
+
+
+two methods 
+
+- change to sudo user sudo -s 
+method 1 
+
+hostnamectl set-hostname awsserver
+
+
+method 2 
+
+
+cat /etc/hostname
+vi /etc/hostname 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

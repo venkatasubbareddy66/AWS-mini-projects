@@ -1,0 +1,21 @@
+-- The MetaData endpoint :
+
+
+-- The 169.254.169.254 IP adress is a "magic"  IP in the Cloud World , in AWS it is used to retrieve user data and instance meta data specific to a instance
+
+-- it can only be accessed locally from instance and available without encryption and authentication 
+
+-- can be accessed using CURL Command 
+
+
+
+curl http://169.254.169.254/latest/ 
+
+or 
+
+
+TOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"` \
+&& curl -H "X-aws-ec2-metadata-token: $TOKEN" -v http://169.254.169.254/latest/
+
+
+withoout /, these are direct values 

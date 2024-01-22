@@ -1,0 +1,19 @@
+-- crate one ec2 instance 
+
+-- get volume id of instance 
+
+
+-- go to cloudwatch n crate rule in events section 
+
+-- c.o create rule --> schdule option --> fixed rate of for every 5 min --> 
+
+NOte:in real time for every 12 hrs 
+
+-- select target as " ec2 cratesnapshot API call"povide volm id 
+
+-- go with default role 
+
+-- create rule check after 5 min u will get snapshots there 
+
+NOte : firt snapshot take time to create from th nxt one it is like incremental backup so it wont take that much 
+

@@ -1,0 +1,48 @@
+--  take snapsot of EBS volume (or safe) 
+
+-- increase EBS volume Size in AWS Console -- select volume --> actions --> moify volume 
+
+it will take some time to change , here no need to stop ec2 
+
+if u do  df -hT u can see 8GiB only but in console it is showing more (u jst modified) 
+
+-- so do extend 
+
+-- Extend a linux File system after resizing a volume 
+
+-- follow some cmnds to extend the linux file system 
+
+-- check if any partition 
+
+sudo lsblk 
+
+-- Extend the partition 
+
+sudo growpart /dev/xvda 1
+
+1 = first partition 
+
+
+-- do
+
+sudo lsblk 
+
+-- do df -hT 
+
+u can still see the 8 GiB only so u an do 
+
+make a note f file system u are using 
+
+-- if u are usinf (XFS file system ) 
+
+sudo xfs_growfs -d /
+
+-- do df -hT  u can able to see 20gb 
+
+-- [Ext4 file system]: 
+
+sudo resize2fs /dev/xvda1
+
+
+
+this is how u can change size of volume without stopping ur ec2 

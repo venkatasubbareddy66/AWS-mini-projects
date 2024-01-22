@@ -1,0 +1,8 @@
+-- the problem is our jenkins is working with public IP it is not good to expose our IP to public internet 
+
+
+
+https://github.com/venkatasubbareddy66/jenkins-EC2/tree/main/installing-jenkins
+
+
+follow this link for the steps to do 

@@ -1,0 +1,7 @@
+-- create one ec2 instance , add tags for the ec2 instances
+
+-- get snapshot using LCM 
+
+-- go to LCM and select EBS SNAPSHOT policy --> volm --> defaultrole --> u can give configuration as u want to take snapshots 
+
+-- this is how u can take snapshots using LCM 

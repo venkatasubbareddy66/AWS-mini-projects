@@ -1,0 +1,22 @@
+
+-- crate 2 c2 nstance like server and backup server
+
+-- connct server instance and create one file 
+
+
+step1 : take snapshot of server 
+
+step 2 : create new EBS Vloume (increase size) out of the snapshot taken in s1 
+
+step3 : stop the backup server and deattach the ebs volume attached 
+
+step 4 : attach the new ebs volume that we created in s2 to the backup server .( make sure that have the same device name of backup server) 
+
+step 5 : start the backup server
+
+-- connect backup server nad check the file is there ot not 
+
+
+
+
+

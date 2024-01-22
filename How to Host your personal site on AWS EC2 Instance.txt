@@ -1,0 +1,39 @@
+1 ======================Host your personal site on AWS EC2 Instance================ 
+
+
+-- create ec2 instance 
+
+-- connect ur instance 
+
+-- i do not have any code here so go to google and search for free website templates 
+
+--  select one website and host this website on ur ec2 insatcne sever 
+
+-- sudo -s
+
+-- yum update -y 
+
+-- yum install -y httpd
+
+-- check httpd status    -- systemctl status httpd
+
+-- it is in inActive mode , make it enable 
+
+-- systemctl enable httpd
+
+-- systemctl start httpd
+
+-- create folder mkdir temp to store zip of ur website 
+
+-- cd temp , go to google and copy ddress of ur website 
+
+-- wget (paste ur link) 
+
+-- mv * /var/www/html/
+
+-- add http and https in inbound rules 
+
+-- check copy Ip and paste in browser u will get ur website 
+
+
+

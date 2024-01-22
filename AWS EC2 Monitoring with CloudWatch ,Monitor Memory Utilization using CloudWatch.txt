@@ -1,0 +1,61 @@
+- By default, we cannot monitor Memory metrics on EC2 Instances.
+
+- https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/monitoring-scripts-intro.html
+
+- use this link for the documentation 
+
+or u can do in nother process
+
+- create ec2 instance 
+
+- crate one role and attach policies 
+
+-  attach policies cloudwatchfullacces and AmazonSSMFullAccess
+
+-  why SSM? 
+
+ANs: i have to store particular valur(json document which is used to fetch the memory utilixation from aws ec2 and send it to AWS cloudwatch ) in ssm
+
+-  create a parameter in the system manager with the name (u can givve any name) 
+
+eg :  /alarm/AWS-CWAgentLinConfig 
+
+- go system manager -->paramter store --> give name --> in the value place copy json script 
+
+{
+	"metrics": {
+		"append_dimensions": {
+			"InstanceId": "${aws:InstanceId}"
+		},
+		"metrics_collected": {
+			"mem": {
+				"measurement": [
+					"mem_used_percent"
+				],
+				"metrics_collection_interval": 60
+			}
+		}
+	}
+}
+
+
+-- ceate ec2 and attach role to ec2 and create with userdata with cloudwatch agent to install
+
+userdata: 
+
+#!/bin/bash
+wget https://s3.amazonaws.com/amazoncloudwatch-agent/linux/amd64/latest/AmazonCloudWatchAgent.zip
+unzip AmazonCloudWatchAgent.zip
+sudo ./install.sh
+sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -a fetch-config -m ec2 -c ssm:/alarm/AWS-CWAgentLinConfig -s
+
+
+-- check whether clouwtch agent is instaled or not by using 
+
+-- sudo /opt/aws/amazon-cloudwatch-agent/bin/amazon-cloudwatch-agent-ctl -m ec2 -a status
+
+-- if it is running it is success
+
+-- now go to CLoudwatch and --> all metrics --> CW Agent --> give instacne id and chck logs of memory
+
+

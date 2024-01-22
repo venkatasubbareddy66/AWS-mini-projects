@@ -1,0 +1,14 @@
+--  it  is just assuming practical , in real world u can not login without keys 
+
+--  create ec2 an connect n create some files in it 
+
+--  let us asume if we lost this key pair 
+
+--  take snapshot of vol for rootvolume 
+
+--  crate an AMI from the snapshot 
+
+-- create a new instnce from the AMI created and a nw key pair to login to the ec2 instance 
+
+-- Login to the new EC2 instance with the new key pair 
+

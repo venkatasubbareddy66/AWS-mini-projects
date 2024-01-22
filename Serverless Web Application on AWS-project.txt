@@ -1,0 +1,4 @@
+-- in this project ,we wil build a serverless web aplications using AWS lambda, DynamoDB and S3 . The application will aloow users to create , read , update and delete(CRUD) items from DynamoDB table 
+
+
+-- all files we are keep in S3 bucket 

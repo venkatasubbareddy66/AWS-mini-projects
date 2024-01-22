@@ -1,0 +1,99 @@
+-- create one ubuntu ec2 instance 
+
+-- there are multple ways to deloy nodejs but this is my comfortable way to deploy 
+
+-- folllow th steps to install Nodejs 
+
+
+
+
+            Step 1: Install NodeJS and NPM using nvm
+
+-- Install node version manager (nvm) by typing the following at the command line.
+
+
+sudo su -
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.34.0/install.sh | bash
+
+i got this from offical page of Nodejs 
+
+
+
+--  Activate nvm by typing the following at the command line.
+
+
+. ~/.nvm/nvm.sh
+
+
+-- Use nvm to install the latest version of Node.js by typing the following at the command line.
+
+nvm install node
+
+-- Test that node and npm are installed and running correctly by typing the following at the terminal:
+
+
+node -v
+npm -v
+
+
+
+                  Step 2: Install Git and clone repository from GitHub
+
+
+-- To install git, run below commands in the terminal window:
+
+
+sudo apt-get update -y
+sudo apt-get install git -y
+git --version
+
+
+-- Run below command to clone the code repository from Github:
+
+git clone https://github.com/venkatasubbareddy66/nodejs-EC2.git
+
+
+
+-- Get inside the directory and install Packages 
+
+cd nodejs-EC2
+npm install 
+
+
+-- start the application 
+
+npm start 
+
+once u start , copy ip of instance u can know content in ur application 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

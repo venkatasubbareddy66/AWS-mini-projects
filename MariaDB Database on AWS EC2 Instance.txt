@@ -1,0 +1,168 @@
+-- create ec2 instance , make sure kernal version is 5.10 
+
+-- connect ec2 instance 
+
+-- allow 3306 in SG 
+
+
+
+
+--- use this cmnds one by one  to install MariaDB
+
+
+sudo su -
+yum -y install mariadb-server wget
+systemctl enable mariadb
+systemctl start mariadb
+yum -y update
+
+
+-------------- set environment variables 
+
+DBName=ec2db
+DBPassword=admin123456
+DBRootPassword=admin123456
+DBUser=ec2dbuser
+
+paste all these things one by one 
+
+
+-------------- now configure our DB (Database Setup on EC2 Instance:)
+
+
+
+echo "CREATE DATABASE ${DBName};" >> /tmp/db.setup
+echo "CREATE USER '${DBUser}' IDENTIFIED BY '${DBPassword}';" >> /tmp/db.setup
+echo "GRANT ALL PRIVILEGES ON *.* TO '${DBUser}'@'%';" >> /tmp/db.setup
+echo "FLUSH PRIVILEGES;" >> /tmp/db.setup
+mysqladmin -u root password "${DBRootPassword}"
+mysql -u root --password="${DBRootPassword}" < /tmp/db.setup
+rm /tmp/db.setup
+
+
+paste this all one by one 
+
+
+------ Adding some dummy data to the Database inside EC2 Instance:
+
+
+mysql -u root --password="${DBRootPassword}"
+USE ec2db;
+CREATE TABLE table1 (id INT, name VARCHAR(45));
+INSERT INTO table1 VALUES(1, 'Virat'), (2, 'Sachin'), (3, 'Dhoni'), (4, 'ABD');
+SELECT * FROM table1;
+
+
+
+
+--- getting 
+
+
+
+
+==================================Migrating a MariaDB Database from AWS EC2 onto an RDS Instance (DB Migration) 
+
+
+-- create one Mariadb database engine  in the RDS in AWS console 
+
+-- now in the above ec2 u hvae installed Mariadb instance and created some data in it 
+
+-- now exit from the data baste type exit 
+
+-- execute below cmnds to migrate the database 
+
+mysqldump -u root -p ec2db > ec2db.sql
+mysql -h <replace-rds-end-point-here> -P 3306 -u rdsuser -p rdsdb < ec2db.sql
+mysql -h <replace-rds-end-point-here> -P 3306 -u rdsuser -p
+USE rdsdb
+SELECT * FROM table1;
+
+
+-- firts u have to take dump 
+
+mysqldump -u root -p ec2db > ec2db.sql
+
+
+ ec2db.sql anyname but it should ends with .sql 
+
+
+it will ask password , nter the password 
+
+
+
+------ now do migrate 
+
+
+mysql -h <replace-rds-end-point-here> -P 3306 -u rdsuser -p rdsdb < ec2db.sql
+
+here rdsdb =  username --> configuration --> DBname u will get the name of DB 
+
+once u enter it will ask password n enter password 
+
+
+u have jst created RDS in console it do not have any values in it but now u have migrated DB from ec2 to RDS 
+
+
+-------verify 
+
+connect 
+
+mysql -h <replace-rds-end-point-here> -P 3306 -u rdsuser -p 
+
+
+this command is used to connect DB in the ec2 from the  RDS that u have created 
+
+
+-- u will enter into mariaDB 
+
+
+-- check DB's 
+
+SHOW Databases;
+
+
+-- verify we have the data or not ? 
+
+USE rdsdb
+
+SELECT * FROM table1;
+
+
+u will get all data u have created in the ec2 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
