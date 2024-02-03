@@ -2,7 +2,7 @@
 
 
 
-https://github.com/venkatasubbareddy66/jenkins-EC2/tree/main/installing-jenkins
+https://github.com/venkatasubbareddy66/jenkins-EC2/tree/main/installing-jenkins 
 
 
 follow this link for the steps to do 
